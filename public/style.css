@@ -1,0 +1,95 @@
+/* ================================
+   TRW Gym 2.0 - Final Fix
+   File: public/style.css
+================================ */
+
+/* 1. RESET EVERYTHING */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0b1120; /* Dark Navy Background */
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* 2. FORCE ROOT TO FILL SCREEN & CENTER CONTENT */
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: grid;         /* This fixes the "blank" issue */
+  place-items: center;   /* Dead center alignment */
+}
+
+/* 3. THE GYM CARD */
+.gym-card {
+  background: #1e293b;   /* Slate Blue Card */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+  color: white;          /* Ensure text is white */
+}
+
+.gym-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  background: linear-gradient(to right, #ffffff, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gym-desc {
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+/* ================================
+   4. VOICEFLOW WIDGET OVERRIDES
+================================ */
+
+:where(.vfrc-widget, .vfrc-chat) {
+  background-color: #1e293b !important; /* Matches Card */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+:where(.vfrc-header) {
+  background: #0f172a !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+:where(.vfrc-title) {
+  color: white !important;
+}
+
+:where(.vfrc-user-response .vfrc-message) {
+  background: #3b82f6 !important; /* Electric Blue */
+  color: white !important;
+}
+
+:where(.vfrc-system-response .vfrc-message) {
+  background-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+:where(.vfrc-button, .vfrc-choice) {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border: 1px solid #3b82f6 !important;
+  color: #3b82f6 !important;
+}
+:where(.vfrc-button:hover, .vfrc-choice:hover) {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+:where(.vfrc-launcher) {
+  background-color: #3b82f6 !important;
+}
