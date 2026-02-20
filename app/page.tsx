@@ -1,8 +1,9 @@
+"use client";
+
 import { useEffect } from "react";
 
-export default function App() {
+export default function Home() {
   useEffect(() => {
-    // 1. Prevent duplicate scripts
     if (document.querySelector('script[data-vf-widget="true"]')) return;
 
     const script = document.createElement("script");
@@ -11,12 +12,8 @@ export default function App() {
     script.setAttribute("data-vf-widget", "true");
 
     script.onload = () => {
-      // 2. Link the CSS file 
       const cssUrl = `${window.location.origin}/style.css`;
-
-      // 3. Load Voiceflow with the Custom Stylesheet
-      // @ts-ignore
-      window.voiceflow?.chat?.load({
+      (window as unknown as { voiceflow?: { chat?: { load: (config: unknown) => void } } }).voiceflow?.chat?.load({
         verify: { projectID: "6872f9b4bf484647c1703e07" },
         url: "https://general-runtime.voiceflow.com",
         versionID: "production",
@@ -31,7 +28,6 @@ export default function App() {
   }, []);
 
   return (
-    // This div is centered by the #root grid layout in style.css
     <div className="gym-card">
       <h1 className="gym-title">TRW 2.0 Gym</h1>
       <p className="gym-desc">
@@ -39,18 +35,18 @@ export default function App() {
         <br />
         Our AI agent is online and ready to help.
       </p>
-      
-      <button 
-        onClick={() => (window as any).voiceflow?.chat?.open?.()}
+
+      <button
+        onClick={() => (window as unknown as { voiceflow?: { chat?: { open?: () => void } } }).voiceflow?.chat?.open?.()}
         style={{
-          padding: '12px 24px',
-          borderRadius: '8px',
-          border: 'none',
-          background: '#3b82f6',
-          color: 'white',
-          fontWeight: 'bold',
-          cursor: 'pointer',
-          fontSize: '1rem'
+          padding: "12px 24px",
+          borderRadius: "8px",
+          border: "none",
+          background: "#3b82f6",
+          color: "white",
+          fontWeight: "bold",
+          cursor: "pointer",
+          fontSize: "1rem",
         }}
       >
         Open Chat
